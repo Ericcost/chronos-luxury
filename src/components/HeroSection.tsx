@@ -1,7 +1,12 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
+  const scrollToDestinations = () => {
+    document.getElementById("destinations")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
@@ -78,10 +83,15 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.8 }}
           >
-            <button className="btn-premium px-8 py-4 rounded-lg text-primary-foreground font-medium text-lg min-w-[200px]">
-              Book Your Journey
-            </button>
-            <button className="btn-outline-gold px-8 py-4 rounded-lg font-medium text-lg min-w-[200px]">
+            <Link to="/booking">
+              <button className="btn-premium px-8 py-4 rounded-lg text-primary-foreground font-medium text-lg min-w-[200px]">
+                Book Your Journey
+              </button>
+            </Link>
+            <button 
+              onClick={scrollToDestinations}
+              className="btn-outline-gold px-8 py-4 rounded-lg font-medium text-lg min-w-[200px]"
+            >
               Explore Destinations
             </button>
           </motion.div>
@@ -94,8 +104,9 @@ const HeroSection = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 0.8 }}
         >
-          <motion.div
-            className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center p-2"
+          <motion.button
+            onClick={scrollToDestinations}
+            className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center p-2 cursor-pointer"
             animate={{ y: [0, 5, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           >
@@ -104,7 +115,7 @@ const HeroSection = () => {
               animate={{ y: [0, 12, 0] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
             />
-          </motion.div>
+          </motion.button>
         </motion.div>
       </div>
     </section>

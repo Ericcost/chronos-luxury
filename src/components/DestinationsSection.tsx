@@ -1,36 +1,11 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import DestinationCard from "./DestinationCard";
-import parisBg from "@/assets/paris-1889.jpg";
-import cretaceousBg from "@/assets/cretaceous.jpg";
-import florenceBg from "@/assets/florence-1504.jpg";
-
-const destinations = [
-  {
-    title: "Paris",
-    era: "Belle Époque",
-    year: "1889",
-    description: "Witness the birth of the Eiffel Tower during the World Exposition. Stroll through gas-lit boulevards and dine in the cafés of Montmartre.",
-    image: parisBg,
-  },
-  {
-    title: "Cretaceous",
-    era: "Prehistoric Era",
-    year: "-65 Million Years",
-    description: "Walk among the giants. Our secure temporal dome lets you observe majestic dinosaurs in their natural habitat, moments before the asteroid.",
-    image: cretaceousBg,
-  },
-  {
-    title: "Florence",
-    era: "High Renaissance",
-    year: "1504",
-    description: "Meet Leonardo da Vinci and Michelangelo. Witness the unveiling of David and explore the workshops of history's greatest artists.",
-    image: florenceBg,
-  },
-];
+import { destinations } from "@/data/destinations";
 
 const DestinationsSection = () => {
   return (
-    <section className="py-24 md:py-32 px-4 relative">
+    <section id="destinations" className="py-24 md:py-32 px-4 relative">
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-charcoal-light/30 to-background pointer-events-none" />
 
@@ -64,11 +39,16 @@ const DestinationsSection = () => {
         {/* Destinations Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {destinations.map((destination, index) => (
-            <DestinationCard
-              key={destination.title}
-              {...destination}
-              index={index}
-            />
+            <Link to={`/destinations/${destination.slug}`} key={destination.id}>
+              <DestinationCard
+                title={destination.title}
+                era={destination.era}
+                year={destination.year}
+                description={destination.shortDescription}
+                image={destination.image}
+                index={index}
+              />
+            </Link>
           ))}
         </div>
 
@@ -80,9 +60,11 @@ const DestinationsSection = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.5, duration: 0.6 }}
         >
-          <button className="btn-outline-gold px-8 py-4 rounded-lg font-medium text-lg">
-            View All Destinations
-          </button>
+          <Link to="/destinations">
+            <button className="btn-outline-gold px-8 py-4 rounded-lg font-medium text-lg">
+              View All Destinations
+            </button>
+          </Link>
         </motion.div>
       </div>
     </section>

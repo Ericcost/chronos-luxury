@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import { Clock, Instagram, Twitter, Linkedin, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative py-16 px-4 border-t border-border/30">
+    <footer id="footer" className="relative py-16 px-4 border-t border-border/30">
       {/* Subtle gradient background */}
       <div className="absolute inset-0 bg-gradient-to-t from-charcoal-light/20 to-transparent pointer-events-none" />
 
@@ -23,7 +24,7 @@ const Footer = () => {
                 <Clock className="w-5 h-5 text-primary" />
               </div>
               <span className="font-serif text-xl font-semibold text-foreground">
-                Chronos<span className="text-primary">Voyages</span>
+                TimeTravel<span className="text-primary">Agency</span>
               </span>
             </motion.div>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-md mb-6">
@@ -50,19 +51,29 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h4 className="font-serif text-lg font-semibold text-foreground mb-4">
-              Voyages
+              Destinations
             </h4>
             <ul className="space-y-3">
-              {["Popular Eras", "Exclusive Events", "Private Tours", "Gift Cards"].map((link) => (
-                <li key={link}>
-                  <a
-                    href="#"
-                    className="text-muted-foreground text-sm hover:text-primary transition-colors duration-300"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <Link to="/destinations/paris-1889" className="text-muted-foreground text-sm hover:text-primary transition-colors duration-300">
+                  Paris 1889
+                </Link>
+              </li>
+              <li>
+                <Link to="/destinations/cretaceous" className="text-muted-foreground text-sm hover:text-primary transition-colors duration-300">
+                  Cretaceous Period
+                </Link>
+              </li>
+              <li>
+                <Link to="/destinations/florence-1504" className="text-muted-foreground text-sm hover:text-primary transition-colors duration-300">
+                  Florence 1504
+                </Link>
+              </li>
+              <li>
+                <Link to="/destinations" className="text-muted-foreground text-sm hover:text-primary transition-colors duration-300">
+                  View All
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -72,16 +83,26 @@ const Footer = () => {
               Company
             </h4>
             <ul className="space-y-3">
-              {["About Us", "Safety Protocol", "Terms of Service", "Privacy Policy"].map((link) => (
-                <li key={link}>
-                  <a
-                    href="#"
-                    className="text-muted-foreground text-sm hover:text-primary transition-colors duration-300"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <Link to="/booking" className="text-muted-foreground text-sm hover:text-primary transition-colors duration-300">
+                  Book a Journey
+                </Link>
+              </li>
+              <li>
+                <a href="#" className="text-muted-foreground text-sm hover:text-primary transition-colors duration-300">
+                  Safety Protocol
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-muted-foreground text-sm hover:text-primary transition-colors duration-300">
+                  Terms of Service
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-muted-foreground text-sm hover:text-primary transition-colors duration-300">
+                  Privacy Policy
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -89,7 +110,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border/30 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
-            © {currentYear} Chronos Voyages. All rights reserved across all timelines.
+            © {currentYear} TimeTravel Agency. All rights reserved across all timelines.
           </p>
           <p className="text-muted-foreground/60 text-xs">
             Temporal travel is subject to paradox insurance requirements.
